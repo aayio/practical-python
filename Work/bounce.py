@@ -6,5 +6,5 @@ bounce = 1
 
 while bounce <= 10:
     height *= 0.6
-    print(bounce, height)
+    print(bounce, round(height, 4))
     bounce += 1
