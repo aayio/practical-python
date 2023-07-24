@@ -19,7 +19,12 @@ while principal > 0:
     else:
         total_payment = base_payment
     
-    principal = principal * (1+rate/12) - total_payment
+    if total_payment >= principal:
+        total_payment = principal
+        principal = 0
+    else:
+        principal = principal * (1+rate/12) - total_payment
+    
     total_paid = total_paid + total_payment
     print(months, round(total_paid, 2), round(principal, 2))
 
@@ -28,4 +33,9 @@ print('months', months)
 
 # How much will Dave pay if he pays an extra $1000/month for 4 years starting after the first five years have already been paid?
 # total paid 880074.1
+# months 310
+
+# While you’re at it, fix the program to correct for the overpayment that occurs in the last month.
+# 310 878199.2 0
+# total paid 878199.2
 # months 310
