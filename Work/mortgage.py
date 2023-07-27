@@ -26,10 +26,13 @@ while principal > 0:
         principal = principal * (1+rate/12) - total_payment
     
     total_paid = total_paid + total_payment
-    print(months, round(total_paid, 2), round(principal, 2))
+    # print(months, round(total_paid, 2), round(principal, 2))
+    print(f'{months:>4} {total_paid:>11.2f} {principal:>11.2f}')
 
-print('total paid', round(total_paid, 2))
-print('months', months)
+print('')
+# print('total paid', round(total_paid, 2))
+# print('months', months)
+print(f'total paid: {total_paid:.2f} in {months} months')
 
 # How much will Dave pay if he pays an extra $1000/month for 4 years starting after the first five years have already been paid?
 # total paid 880074.1
