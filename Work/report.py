@@ -5,7 +5,7 @@
 import csv
 
 def read_portfolio(filename):
-    '''opens a given portfolio file and reads it into a list of tuples'''
+    '''opens a given portfolio file and reads it into a list of dictionaries'''
     portfolio = []
     
     with open(filename, 'rt') as f:
@@ -13,7 +13,7 @@ def read_portfolio(filename):
         headers = next(rows)
     
         for row in rows:
-            holding = (row[0], int(row[1]), float(row[2]))
+            holding = { 'name': row[0], 'shares': int(row[1]), 'price': float(row[2]) }
             portfolio.append(holding)
     
     return portfolio
