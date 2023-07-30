@@ -34,3 +34,18 @@ def read_prices(filename):
                 print("Couldn't parse", row)
     
     return prices
+
+# Tie all of this work together by adding a few additional statements to your report.py program that computes gain/loss. These statements should take the list of stocks in Exercise 2.5 and the dictionary of prices in Exercise 2.6 and compute the current value of the portfolio along with the gain/loss.
+
+portfolio = read_portfolio('Data/portfolio.csv')
+prices = read_prices('Data/prices.csv')
+
+total_cost = 0.0
+current_value = 0.0
+
+for s in portfolio:
+    total_cost += s['shares'] * s['price']
+    current_value += s['shares'] * prices[s['name']]
+
+print(f'Current value of portfolio: {current_value:0.2f}')
+print(f'Change: {current_value - total_cost:0.2f}')
