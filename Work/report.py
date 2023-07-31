@@ -7,15 +7,15 @@ import csv
 def read_portfolio(filename):
     '''opens a given portfolio file and reads it into a list of dictionaries'''
     portfolio = []
-    
+
     with open(filename, 'rt') as f:
         rows = csv.reader(f)
         headers = next(rows)
-    
+
         for row in rows:
             holding = { 'name': row[0], 'shares': int(row[1]), 'price': float(row[2]) }
             portfolio.append(holding)
-    
+
     return portfolio
 
 def read_prices(filename):
@@ -34,6 +34,16 @@ def read_prices(filename):
                 print("Couldn't parse", row)
     
     return prices
+
+def make_report(portfolio, prices):
+    report = []
+    
+    for holding in portfolio:
+        change = prices[holding['name']] - holding['price']
+        row = (holding['name'], holding['shares'], prices[holding['name']], change)
+        report.append(row)
+    
+    return report
 
 # Tie all of this work together by adding a few additional statements to your report.py program that computes gain/loss. These statements should take the list of stocks in Exercise 2.5 and the dictionary of prices in Exercise 2.6 and compute the current value of the portfolio along with the gain/loss.
 
