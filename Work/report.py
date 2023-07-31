@@ -62,6 +62,12 @@ print(f'Change: {current_value - total_cost:0.2f}')
 
 # Exercise 2.10: Printing a formatted table
 
+headers = ('Name', 'Shares', 'Price', 'Change')
+
+header_string = '%10s %10s %10s %10s' % headers
+
+print(header_string)
+
 report = make_report(portfolio, prices)
 
 for r in report:
