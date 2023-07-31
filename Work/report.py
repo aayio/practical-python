@@ -59,3 +59,13 @@ for s in portfolio:
 
 print(f'Current value of portfolio: {current_value:0.2f}')
 print(f'Change: {current_value - total_cost:0.2f}')
+
+# Exercise 2.10: Printing a formatted table
+
+report = make_report(portfolio, prices)
+
+for r in report:
+    print('%10s %10d %10.2f %10.2f' % r)
+    
+for name, shares, price, change in report:
+    print(f'{name:>10s} {shares:>10d} {price:>10.2f} {change:>10.2f}')
