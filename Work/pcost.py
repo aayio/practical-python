@@ -12,9 +12,10 @@ def portfolio_cost(filename):
         headers = next(rows)
         
         for rowno, row in enumerate(rows, start=1):
+            record = dict(zip(headers, row))
             try:
-                shares = int(row[1])
-                price = float(row[2])
+                shares = int(record['shares'])
+                price = float(record['price'])
                 total_cost += shares * price
             except ValueError:
                 print(f'Row {rowno}: Bad row: {row}')
