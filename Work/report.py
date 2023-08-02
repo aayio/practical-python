@@ -66,7 +66,17 @@ headers = ('Name', 'Shares', 'Price', 'Change')
 
 header_string = '%10s %10s %10s %10s' % headers
 
+# My way of doing this is super hacky!
+
+column_width = 10
+
+num_columns = len(headers)
+
+separator_string = ' '.join([column_width * '-'] * num_columns)
+
 print(header_string)
+
+print(separator_string)
 
 report = make_report(portfolio, prices)
 
