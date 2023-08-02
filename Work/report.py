@@ -80,11 +80,12 @@ print(separator_string)
 
 report = make_report(portfolio, prices)
 
-for r in report:
-    print('%10s %10d %10.2f %10.2f' % r)
+# for r in report:
+#     print('%10s %10d %10.2f %10.2f' % r)
 
 # Another way of getting values from each tuple and another way of printing the formatted table using f-strings
     
-# for name, shares, price, change in report:
-#     print(f'{name:>10s} {shares:>10d} {price:>10.2f} {change:>10.2f}')
+for name, shares, price, change in report:
+    price_str = f'${price:.2f}'
+    print(f'{name:>10s} {shares:>10d} {price_str:>10} {change:>10.2f}')
 
