@@ -50,6 +50,17 @@ def make_report(portfolio, prices):
     
     return report
 
+def print_change(portfolio, prices):
+    total_cost = 0.0
+    current_value = 0.0
+
+    for s in portfolio:
+        total_cost += s['shares'] * s['price']
+        current_value += s['shares'] * prices[s['name']]
+
+    print(f'Current value of portfolio: {current_value:0.2f}')
+    print(f'Change: {current_value - total_cost:0.2f}')
+
 def print_report(report):
     # Exercise 2.10: Printing a formatted table
     headers = ('Name', 'Shares', 'Price', 'Change')
@@ -81,19 +92,9 @@ def print_report(report):
 
 # Also works with a different set and order of headers
 portfolio = read_portfolio('Data/portfoliodate.csv')
-
 prices = read_prices('Data/prices.csv')
 
-total_cost = 0.0
-current_value = 0.0
-
-for s in portfolio:
-    total_cost += s['shares'] * s['price']
-    current_value += s['shares'] * prices[s['name']]
-
-print(f'Current value of portfolio: {current_value:0.2f}')
-print(f'Change: {current_value - total_cost:0.2f}')
+print_change(portfolio, prices)
 
 report = make_report(portfolio, prices)
-
 print_report(report)
