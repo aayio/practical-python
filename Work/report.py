@@ -5,7 +5,9 @@
 import csv
 
 def read_portfolio(filename):
-    '''opens a given portfolio file and reads it into a list of dictionaries'''
+    '''
+    opens a given portfolio file and reads it into a list of dictionaries
+    '''
     portfolio = []
 
     with open(filename, 'rt') as f:
@@ -20,7 +22,9 @@ def read_portfolio(filename):
     return portfolio
 
 def read_prices(filename):
-    '''reads a set of prices into a dictionary where the keys of the dictionary are the stock names and the values in the dictionary are the stock prices'''
+    '''
+    reads a set of prices into a dictionary where the keys of the dictionary are the stock names and the values in the dictionary are the stock prices
+    '''
     prices = { }
     
     with open(filename, 'rt') as f:
