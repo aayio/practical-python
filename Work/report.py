@@ -83,6 +83,9 @@ num_columns = len(headers)
 
 separator_string = ' '.join([column_width * '-'] * num_columns)
 
+# This is how dabeaz prints the separator string:
+# print(('-' * 10 + ' ') * len(headers))
+
 print(header_string)
 
 print(separator_string)
