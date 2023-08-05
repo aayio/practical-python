@@ -85,16 +85,14 @@ def print_report(report):
     for name, shares, price, change in report:
         price_str = f'${price:.2f}'
         print(f'{name:>10s} {shares:>10d} {price_str:>10} {change:>10.2f}')
+        
+def portfolio_report(portfolio_filename, prices_filename):
+    portfolio = read_portfolio(portfolio_filename)
+    prices = read_prices(prices_filename)
+    
+    print_change(portfolio, prices)
 
-# Tie all of this work together by adding a few additional statements to your report.py program that computes gain/loss. These statements should take the list of stocks in Exercise 2.5 and the dictionary of prices in Exercise 2.6 and compute the current value of the portfolio along with the gain/loss.
+    report = make_report(portfolio, prices)
+    print_report(report)
 
-# portfolio = read_portfolio('Data/portfolio.csv')
-
-# Also works with a different set and order of headers
-portfolio = read_portfolio('Data/portfoliodate.csv')
-prices = read_prices('Data/prices.csv')
-
-print_change(portfolio, prices)
-
-report = make_report(portfolio, prices)
-print_report(report)
+portfolio_report('Data/portfolio.csv', 'Data/prices.csv')
