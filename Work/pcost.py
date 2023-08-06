@@ -29,10 +29,11 @@ def portfolio_cost(filename):
     
     return total_cost
 
-if len(sys.argv) == 2:
-    filename = sys.argv[1]
-else:
-    filename = 'Data/portfolio.csv'
-    
-cost = portfolio_cost(filename)
-print('Total cost:', cost)
+# if len(sys.argv) == 2:
+#     filename = sys.argv[1]
+# else:
+#     filename = 'Data/portfolio.csv'
+
+def main(argv):
+    cost = portfolio_cost(argv[1])
+    print('Total cost:', cost)
