@@ -30,18 +30,23 @@ def read_prices(filename):
     '''
     reads a set of prices into a dictionary where the keys of the dictionary are the stock names and the values in the dictionary are the stock prices
     '''
-    prices = { }
+
+    # Initial implementation
+    # prices = { }
     
-    with open(filename, 'rt') as f:
-        # this file does not have a header
+    # with open(filename, 'rt') as f:
+    #     # this file does not have a header
         
-        rows = csv.reader(f)
+    #     rows = csv.reader(f)
         
-        for row in rows:
-            try:
-                prices[row[0]] = float(row[1])
-            except IndexError:
-                print("Couldn't parse", row)
+    #     for row in rows:
+    #         try:
+    #             prices[row[0]] = float(row[1])
+    #         except IndexError:
+    #             print("Couldn't parse", row)
+    
+    # Use parse_csv
+    prices = dict(parse_csv(filename, types=[str, float], has_headers=False))
     
     return prices
 
