@@ -22,7 +22,8 @@ def read_portfolio(filename):
     #         portfolio.append(holding)
     
     # Use parse_csv
-    portfolio = parse_csv(filename, select=['name', 'shares', 'price'], types=[str, int, float])
+    with open(filename) as f:
+        portfolio = parse_csv(f, select=['name', 'shares', 'price'], types=[str, int, float])
 
     return portfolio
 
@@ -46,7 +47,8 @@ def read_prices(filename):
     #             print("Couldn't parse", row)
     
     # Use parse_csv
-    prices = dict(parse_csv(filename, types=[str, float], has_headers=False))
+    with open(filename) as f:
+        prices = dict(parse_csv(f, types=[str, float], has_headers=False))
     
     return prices
 
