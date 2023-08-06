@@ -4,7 +4,7 @@
 
 import csv
 
-def parse_csv(filename, types, select=None, has_headers=True, delimiter=','):
+def parse_csv(filename, types=None, select=None, has_headers=True, delimiter=','):
     '''
     Parse a CSV file into a list of records
     '''
@@ -18,6 +18,8 @@ def parse_csv(filename, types, select=None, has_headers=True, delimiter=','):
         # If a column selector was given, find indices of the specified columns.
         # Also narrow the set of headers used for resulting dictionaries
         if select:
+            if not has_headers:
+                raise RuntimeError("select argument requires column headers")
             indices = [ headers.index(colname) for colname in select ]
             headers = select
         else:
