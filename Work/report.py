@@ -3,21 +3,26 @@
 # Exercise 2.4
 
 import csv
+from fileparse import parse_csv
 
 def read_portfolio(filename):
     '''
     opens a given portfolio file and reads it into a list of dictionaries
     '''
-    portfolio = []
+    # Initial implementation
+    # portfolio = []
 
-    with open(filename, 'rt') as f:
-        rows = csv.reader(f)
-        headers = next(rows)
+    # with open(filename, 'rt') as f:
+    #     rows = csv.reader(f)
+    #     headers = next(rows)
 
-        for row in rows:
-            record = dict(zip(headers, row))
-            holding = { 'name': record['name'], 'shares': int(record['shares']), 'price': float(record['price']) }
-            portfolio.append(holding)
+    #     for row in rows:
+    #         record = dict(zip(headers, row))
+    #         holding = { 'name': record['name'], 'shares': int(record['shares']), 'price': float(record['price']) }
+    #         portfolio.append(holding)
+    
+    # Use parse_csv
+    portfolio = parse_csv(filename, select=['name', 'shares', 'price'], types=[str, int, float])
 
     return portfolio
 
