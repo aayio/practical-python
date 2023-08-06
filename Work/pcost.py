@@ -37,3 +37,7 @@ def portfolio_cost(filename):
 def main(argv):
     cost = portfolio_cost(argv[1])
     print('Total cost:', cost)
+
+if __name__ == '__main__':
+    import sys
+    main(sys.argv)
