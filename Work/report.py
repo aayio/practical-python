@@ -2,7 +2,7 @@
 #
 # Exercise 2.4
 
-import csv, stock
+import csv, stock, tableformat
 from fileparse import parse_csv
 
 def read_portfolio(filename):
@@ -74,39 +74,49 @@ def print_change(portfolio, prices):
     print(f'Current value of portfolio: {current_value:0.2f}')
     print(f'Change: {current_value - total_cost:0.2f}')
 
-def print_report(report):
-    # Exercise 2.10: Printing a formatted table
-    headers = ('Name', 'Shares', 'Price', 'Change')
-    header_string = '%10s %10s %10s %10s' % headers
+def print_report(report, formatter):
+    # Use a TableFormatter object
+    formatter.headings(['Name', 'Shares', 'Price', 'Change'])
+    
+    # This was the previous code for generating the header
+    # header_string = '%10s %10s %10s %10s' % headers
 
     # My way of doing this is super hacky!
-    column_width = 10
-    num_columns = len(headers)
-    separator_string = ' '.join([column_width * '-'] * num_columns)
+    # column_width = 10
+    # num_columns = len(headers)
+    # separator_string = ' '.join([column_width * '-'] * num_columns)
 
     # This is how dabeaz prints the separator string:
     # print(('-' * 10 + ' ') * len(headers))
 
-    print(header_string)
-    print(separator_string)
+    # print(header_string)
+    # print(separator_string)
+    
+    ### End header generating code ###
 
+    # Print report using old-style string formatting
     # for r in report:
     #     print('%10s %10d %10.2f %10.2f' % r)
 
-    # Another way of getting values from each tuple and another way of printing the formatted table using f-strings
-        
     for name, shares, price, change in report:
-        price_str = f'${price:.2f}'
-        print(f'{name:>10s} {shares:>10d} {price_str:>10} {change:>10.2f}')
+        # Print report using f-strings        
+        # price_str = f'${price:.2f}'
+        # print(f'{name:>10s} {shares:>10d} {price_str:>10} {change:>10.2f}')
+        
+        # Use a TableFormatter object to print the rows
+        rowdata = [name, str(shares), f'{price:0.2f}', f'{change:0.2f}']
+        formatter.row(rowdata)
         
 def portfolio_report(portfolio_filename, prices_filename):
     portfolio = read_portfolio(portfolio_filename)
     prices = read_prices(prices_filename)
     
-    print_change(portfolio, prices)
+    # print_change(portfolio, prices)
 
     report = make_report(portfolio, prices)
-    print_report(report)
+    
+    formatter = tableformat.TextTableFormatter()
+    print_report(report, formatter)
     
 def main(argv):
     portfolio_report(argv[1], argv[2])
