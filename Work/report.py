@@ -2,7 +2,7 @@
 #
 # Exercise 2.4
 
-import csv
+import csv, stock
 from fileparse import parse_csv
 
 def read_portfolio(filename):
@@ -23,9 +23,10 @@ def read_portfolio(filename):
     
     # Use parse_csv
     with open(filename) as f:
-        portfolio = parse_csv(f, select=['name', 'shares', 'price'], types=[str, int, float])
+        portfolio_as_dict = parse_csv(f, select=['name', 'shares', 'price'], types=[str, int, float])
+        portfolio_as_instances = [ stock.Stock(d['name'], d['shares'], d['price']) for d in portfolio_as_dict ]
 
-    return portfolio
+    return portfolio_as_instances
 
 def read_prices(filename):
     '''
