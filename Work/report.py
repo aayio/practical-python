@@ -115,7 +115,7 @@ def portfolio_report(portfolio_filename, prices_filename):
 
     report = make_report(portfolio, prices)
     
-    formatter = tableformat.TextTableFormatter()
+    formatter = tableformat.CSVTableFormatter()
     print_report(report, formatter)
     
 def main(argv):
