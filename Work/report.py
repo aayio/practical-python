@@ -57,8 +57,8 @@ def make_report(portfolio, prices):
     report = []
     
     for holding in portfolio:
-        change = prices[holding['name']] - holding['price']
-        row = (holding['name'], holding['shares'], prices[holding['name']], change)
+        change = prices[holding.name] - holding.price
+        row = (holding.name, holding.shares, prices[holding.name], change)
         report.append(row)
     
     return report
@@ -68,8 +68,8 @@ def print_change(portfolio, prices):
     current_value = 0.0
 
     for s in portfolio:
-        total_cost += s['shares'] * s['price']
-        current_value += s['shares'] * prices[s['name']]
+        total_cost += s.shares * s.price
+        current_value += s.shares * prices[s.name]
 
     print(f'Current value of portfolio: {current_value:0.2f}')
     print(f'Change: {current_value - total_cost:0.2f}')
