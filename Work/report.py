@@ -119,7 +119,10 @@ def portfolio_report(portfolio_filename, prices_filename, fmt='txt'):
     print_report(report, formatter)
     
 def main(argv):
-    portfolio_report(argv[1], argv[2])
+    if len(argv) == 3:
+        portfolio_report(argv[1], argv[2])
+    if len(argv) == 4:
+        portfolio_report(argv[1], argv[2], argv[3])
 
 # portfolio_report('Data/portfolio.csv', 'Data/prices.csv')
 
